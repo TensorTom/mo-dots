@@ -19,7 +19,8 @@ from mo_logs import Log
 from mo_math import MAX
 from mo_testing.fuzzytestcase import FuzzyTestCase
 
-from mo_dots import to_data, Null, set_default, Data, literal_field, NullType, leaves_to_data, from_data
+from mo_dots import to_data, Null, set_default, Data, literal_field, NullType, leaves_to_data, from_data, is_null, \
+    FlatList
 from mo_dots.objects import datawrap
 
 
@@ -594,10 +595,10 @@ class TestDot(FuzzyTestCase):
     def test_pop_list(self):
         l = to_data([1, 2, 3, 4])
 
-        self.assertEquals(l.pop(3), 4)
-        self.assertEquals(l.pop(0), 1)
-        self.assertEquals(l.pop(1), 3)
-        self.assertEquals(l.pop(), 2)
+        self.assertEqual(l.pop(3), 4)
+        self.assertEqual(l.pop(0), 1)
+        self.assertEqual(l.pop(1), 3)
+        self.assertEqual(l.pop(), 2)
 
     def test_pop_dict(self):
         d = to_data({"a": 1, "b": 2, "c": 3})
